@@ -7,11 +7,11 @@ public class QueueUsingStatckMainClass {
 	        q.enqueue(20);
 	        q.enqueue(30);
 
-	        System.out.println(q.dequeue()); // 10
-	        System.out.println(q.dequeue()); // 20
+	        System.out.println(q.dequeue()); 
+	        System.out.println(q.dequeue()); 
 
 	        q.enqueue(40);
-	        System.out.println(q.dequeue()); // 30
+	        System.out.println(q.dequeue()); 
 	    }
 	}
 
