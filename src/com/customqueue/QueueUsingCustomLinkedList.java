@@ -2,30 +2,30 @@ package com.customqueue;
 
 import com.customLinkedList.CustomLinkedList;
 
-public class QueueUsingCustomLinkedList {
-	private CustomLinkedList list;
+public class QueueUsingCustomLinkedList<T> {
+    private CustomLinkedList<T> list;
 
     public QueueUsingCustomLinkedList() {
-        list = new CustomLinkedList();
+        list = new CustomLinkedList<>();
     }
 
     // Enqueue = add at end
-    public void enqueue(int data) {
+    public void enqueue(T data) {
         list.addLast(data);
     }
 
     // Dequeue = remove from front
-    public int dequeue() {
+    public T dequeue() {
         if (list.isEmpty()) {
             throw new RuntimeException("Queue is empty");
         }
-        int front = list.get(0);
+        T front = list.get(0);
         list.deleteFirst();
         return front;
     }
 
     // Peek front element
-    public int peek() {
+    public T peek() {
         if (list.isEmpty()) {
             throw new RuntimeException("Queue is empty");
         }
@@ -47,5 +47,4 @@ public class QueueUsingCustomLinkedList {
         System.out.print("Front -> ");
         list.printList(); // head is front, tail is rear
     }
-
 }
