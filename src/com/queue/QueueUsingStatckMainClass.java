@@ -12,7 +12,7 @@ public class QueueUsingStatckMainClass {
 
 	        q.enqueue(40);
 	        System.out.println(q.dequeue()); 
-	    }
 	}
-
 }
+
+
