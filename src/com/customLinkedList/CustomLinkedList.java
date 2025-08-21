@@ -1,17 +1,8 @@
 package com.customLinkedList;
 
-public class CustomLinkedList {
-	private class Node {
-        int data;
-        Node next;
+public class CustomLinkedList<T> {
 
-        Node(int data) {
-            this.data = data;
-            this.next = null;
-        }
-    }
-
-    private Node head;  // reference to first node
+    private Node<T> head;  // reference to first node
     private int size;   // keep track of size
 
     public CustomLinkedList() {
@@ -20,20 +11,20 @@ public class CustomLinkedList {
     }
 
     // 1. Insert at beginning
-    public void addFirst(int data) {
-        Node newNode = new Node(data);
+    public void addFirst(T data) {
+        Node<T> newNode = new Node<T>(data);
         newNode.next = head;
         head = newNode;
         size++;
     }
 
     // 2. Insert at end
-    public void addLast(int data) {
-        Node newNode = new Node(data);
+    public void addLast(T data) {
+        Node<T> newNode = new Node<T>(data);
         if (head == null) {
             head = newNode;
         } else {
-            Node curr = head;
+            Node<T> curr = head;
             while (curr.next != null) {
                 curr = curr.next;
             }
@@ -43,7 +34,7 @@ public class CustomLinkedList {
     }
 
     // 3. Insert at index
-    public void insertAt(int index, int data) {
+    public void insertAt(int index, T data) {
         if (index < 0 || index > size) {
             throw new IndexOutOfBoundsException("Invalid index");
         }
@@ -51,8 +42,8 @@ public class CustomLinkedList {
             addFirst(data);
             return;
         }
-        Node newNode = new Node(data);
-        Node curr = head;
+        Node<T> newNode = new Node<T>(data);
+        Node<T> curr = head;
         for (int i = 0; i < index - 1; i++) {
             curr = curr.next;
         }
@@ -78,7 +69,7 @@ public class CustomLinkedList {
         if (head.next == null) {
             head = null;
         } else {
-            Node curr = head;
+            Node<T> curr = head;
             while (curr.next.next != null) {
                 curr = curr.next;
             }
@@ -96,7 +87,7 @@ public class CustomLinkedList {
             deleteFirst();
             return;
         }
-        Node curr = head;
+        Node<T> curr = head;
         for (int i = 0; i < index - 1; i++) {
             curr = curr.next;
         }
@@ -105,11 +96,11 @@ public class CustomLinkedList {
     }
 
     // 7. Get element at index
-    public int get(int index) {
+    public T get(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("Invalid index");
         }
-        Node curr = head;
+        Node<T> curr = head;
         for (int i = 0; i < index; i++) {
             curr = curr.next;
         }
@@ -123,7 +114,7 @@ public class CustomLinkedList {
 
     // 9. Print all elements
     public void printList() {
-        Node curr = head;
+        Node<T> curr = head;
         while (curr != null) {
             System.out.print(curr.data + " → ");
             curr = curr.next;
