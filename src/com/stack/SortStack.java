@@ -1,35 +1,43 @@
 package com.stack;
 
-import java.util.Stack;
+import com.customstack.StackUsingCustomLinkedList;
 
 public class SortStack {
-	public static Stack<Integer> sortStack(Stack<Integer> stack) {
-        Stack<Integer> tempStack = new Stack<>();
+	 public static void sort(StackUsingCustomLinkedList<Integer> stack) {
+	        StackUsingCustomLinkedList<Integer> tempStack = new StackUsingCustomLinkedList<>();
 
-        while (!stack.isEmpty()) {
-            int curr = stack.pop();
+	        while (!stack.isEmpty()) {
+	            int curr = stack.pop();
 
-            
-            while (!tempStack.isEmpty() && tempStack.peek() > curr) {
-                stack.push(tempStack.pop());
-            }
+	            // Move elements back from tempStack to stack if they are greater
+	            while (!tempStack.isEmpty() && tempStack.peek() > curr) {
+	                stack.push(tempStack.pop());
+	            }
 
-            tempStack.push(curr);
-        }
+	            // Place current element in sorted position
+	            tempStack.push(curr);
+	        }
 
-        return tempStack; 
-    }
+	        // Move back sorted elements into original stack
+	        while (!tempStack.isEmpty()) {
+	            stack.push(tempStack.pop());
+	        }
+	    }
 
-    public static void main(String[] args) {
-        Stack<Integer> stack = new Stack<>();
-        stack.push(3);
-        stack.push(5);
-        stack.push(1);
-        stack.push(4);
+	    public static void main(String[] args) {
+	        StackUsingCustomLinkedList<Integer> stack = new StackUsingCustomLinkedList<>();
+	        stack.push(3);
+	        stack.push(5);
+	        stack.push(1);
+	        stack.push(4);
 
-        Stack<Integer> sorted = sortStack(stack);
+	        System.out.print("Original Stack: ");
+	        stack.printStack();
 
-        System.out.println("Sorted Stack: " + sorted); 
-    }
+	        sort(stack);
+
+	        System.out.print("Sorted Stack: ");
+	        stack.printStack();
+	    }
 
 }

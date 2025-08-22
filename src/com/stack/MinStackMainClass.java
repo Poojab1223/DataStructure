@@ -1,17 +1,20 @@
 package com.stack;
 
-public class MinStackMaiClass {
-	public static void main(String[] args) {
-        MinStack minStack = new MinStack();
-        minStack.push(3);
-        minStack.push(5);
-        System.out.println(minStack.getMin()); 
-        minStack.push(2);
-        minStack.push(1);
-        System.out.println(minStack.getMin());
-        minStack.pop();
-        System.out.println(minStack.getMin()); 
-        System.out.println(minStack.top());    
-    }
+import com.customstack.StackUsingCustomLinkedList;
 
+public class MinStackMainClass {
+	public static void main(String[] args) {
+		StackUsingCustomLinkedList<Integer> stack = new StackUsingCustomLinkedList<>();
+
+        stack.push(10);
+        stack.push(20);
+        stack.push(30);
+
+        stack.printStack();  // Top -> 30 → 20 → 10 → null
+
+        System.out.println("Peek: " + stack.peek()); // 30
+        System.out.println("Pop: " + stack.pop());   // 30
+
+        stack.printStack();  // Top -> 20 → 10 → null   
+    }
 }
