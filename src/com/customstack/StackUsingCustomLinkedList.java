@@ -2,30 +2,30 @@ package com.customstack;
 
 import com.customLinkedList.CustomLinkedList;
 
-public class StackUsingCustomLinkedList {
-	private CustomLinkedList list;
+public class StackUsingCustomLinkedList<T> {
+	private CustomLinkedList<T> list;
 
     public StackUsingCustomLinkedList() {
-        list = new CustomLinkedList();
+        list = new CustomLinkedList<>();
     }
 
     // Push = add at head
-    public void push(int data) {
+    public void push(T data) {
         list.addFirst(data);
     }
 
     // Pop = remove from head
-    public int pop() {
+    public T pop() {
         if (list.isEmpty()) {
             throw new RuntimeException("Stack is empty");
         }
-        int top = list.get(0);
+        T top = list.get(0);
         list.deleteFirst();
         return top;
     }
 
     // Peek = value at head
-    public int peek() {
+    public T peek() {
         if (list.isEmpty()) {
             throw new RuntimeException("Stack is empty");
         }
@@ -45,7 +45,7 @@ public class StackUsingCustomLinkedList {
     // Print stack (top to bottom)
     public void printStack() {
         System.out.print("Top -> ");
-        list.printList(); // since list.printList prints from head to end
+        list.printList(); // prints from head to end
     }
 
 }
