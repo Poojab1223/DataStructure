@@ -2,7 +2,7 @@ package com.queue;
 
 public class QueueUsingStatckMainClass {
 	public static void main(String[] args) {
-		 QueueUsingStack q = new QueueUsingStack();
+		 QueueUsingStack<Integer> q = new QueueUsingStack<Integer>();
 	        q.enqueue(10);
 	        q.enqueue(20);
 	        q.enqueue(30);
