@@ -1,11 +1,13 @@
 package com.linkedlist;
 
+import com.customLinkedList.Node;
+
 public class SortLinkedList {
 	public static void main(String[] args) {
-		Node head = new Node(4);
-        head.next = new Node(2);
-        head.next.next = new Node(1);
-        head.next.next.next = new Node(3);
+		Node<Integer> head = new Node<Integer>(4);
+        head.next = new Node<Integer>(2);
+        head.next.next = new Node<Integer>(1);
+        head.next.next.next = new Node<Integer>(3);
 
         System.out.print("Original List: ");
         printList(head);
@@ -17,27 +19,27 @@ public class SortLinkedList {
     }
 
     // Merge Sort function
-    private static Node mergeSort(Node head) {
+    private static Node<Integer> mergeSort(Node<Integer> head) {
         if (head == null || head.next == null) {
             return head;
         }
 
         // 1. Split list into halves
-        Node middle = getMiddle(head);
-        Node nextOfMiddle = middle.next;
+        Node<Integer> middle = getMiddle(head);
+        Node<Integer> nextOfMiddle = middle.next;
         middle.next = null; // break the list
 
         // 2. Sort each half
-        Node left = mergeSort(head);
-        Node right = mergeSort(nextOfMiddle);
+        Node<Integer> left = mergeSort(head);
+        Node<Integer> right = mergeSort(nextOfMiddle);
 
         // 3. Merge sorted halves
         return mergeLists(left, right);
     }
 
     // Find middle using slow/fast pointer
-    private static Node getMiddle(Node head) {
-        Node slow = head, fast = head;
+    private static Node<Integer> getMiddle(Node<Integer> head) {
+        Node<Integer> slow = head, fast = head;
         while (fast.next != null && fast.next.next != null) {
             slow = slow.next;
             fast = fast.next.next;
@@ -46,9 +48,9 @@ public class SortLinkedList {
     }
 
     // Merge two sorted linked lists (like before)
-    private static Node mergeLists(Node l1, Node l2) {
-        Node dummy = new Node(-1);
-        Node tail = dummy;
+    private static Node<Integer> mergeLists(Node<Integer> l1, Node<Integer> l2) {
+        Node<Integer> dummy = new Node<Integer>(-1);
+        Node<Integer> tail = dummy;
 
         while (l1 != null && l2 != null) {
             if (l1.data <= l2.data) {
@@ -66,7 +68,7 @@ public class SortLinkedList {
         return dummy.next;
     }
 
-    private static void printList(Node head) {
+    private static void printList(Node<Integer> head) {
         while (head != null) {
             System.out.print(head.data + " -> ");
             head = head.next;

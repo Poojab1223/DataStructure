@@ -1,5 +1,7 @@
 package com.linkedlist;
 
+import com.customLinkedList.Node;
+
 public class DetectCycle {
 	public static void main(String[] args) {
 		 Node head = new Node(1);
